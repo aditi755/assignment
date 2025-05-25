@@ -1,11 +1,17 @@
-// app/dashboard/page.tsx
-import ClientProfile from "./ClientProfile";
+import ClientProfile from "../../components/ClientProfile";
+import { getServerAuthSession } from "@/lib/getServerAuthSession";
+import { redirect } from "next/navigation";
+export default async function ProfilePage() {
+   const session = await getServerAuthSession();
 
-export default function ProfilePage() {
+   if(!session) {
+     redirect("/login");
+   }
+
   return (
     <div className="p-4 bg-white">
       <h1 className="text-xl font-semibold mb-4 text-background">Your dashboard</h1>
-      <ClientProfile />
+      <ClientProfile session={session}/>
     </div>
   );
 }

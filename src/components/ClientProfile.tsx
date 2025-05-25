@@ -1,19 +1,10 @@
-// app/dashboard/ClientProfile.tsx
+
 'use client';
 
-import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { signOut } from "next-auth/react";
+import Image from "next/image";
 
-export default function ClientProfile() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.replace("/login");
-    }
-  }, [status, router]);
+export default function ClientProfile({session} : { session: any }) {
 
   if (status === "loading") return (
     <div className="flex flex-col items-center justify-center min-h-[200px]">
@@ -28,10 +19,12 @@ export default function ClientProfile() {
 
   return (
     <div className="bg-white text-background rounded-lg shadow-lg p-8 flex flex-col items-center max-w-md w-full">
-      <img
+      <Image
         src={session?.user?.image || ''}
         alt="Profile Picture"
         className="w-20 h-20 rounded-full mb-4 border-2 border-blue-600 shadow"
+        width={80}
+        height={80}
       />
       <h2 className="text-2xl font-bold mb-2">Hello, {session?.user?.name}!</h2>
       <p className="text-gray-700 mb-6">{session?.user?.email}</p>

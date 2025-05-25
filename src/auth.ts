@@ -1,13 +1,12 @@
-
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
-import { NextAuthConfig } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import type { NextAuthOptions } from "next-auth";
 
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   throw new Error('Missing environment variables for Google authentication');
 }
 
-export const authOptions: NextAuthConfig = {
+export const authOptions: NextAuthOptions = {
   callbacks: {
     async redirect({ url, baseUrl }) {
       if (url.startsWith(baseUrl)) return url;
@@ -15,7 +14,7 @@ export const authOptions: NextAuthConfig = {
     }
   },
   providers: [
-    Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: {
@@ -32,7 +31,6 @@ export const authOptions: NextAuthConfig = {
   }
 };
 
-// Export the NextAuth handlers too
-export const { auth, signIn, signOut } = NextAuth(authOptions);
+// Export the NextAuth request handler for your API route
 const handler = NextAuth(authOptions);
 export { handler };

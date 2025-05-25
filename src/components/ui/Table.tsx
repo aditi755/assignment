@@ -69,9 +69,11 @@ export function Table<T extends { id: string | number }>({
                 className="border-b hover:bg-gray-50 transition-colors"
               >
                 {columns.map((col) => (
-                  <td key={String(col.key)} className="px-4 py-3">
-                    {col.render ? col.render(row[col.key], row) : row[col.key]}
-                  </td>
+                 <td key={String(col.key)} className="px-4 py-3">
+                  {col.render
+                    ? col.render(row[col.key], row)
+                    : (row[col.key] as React.ReactNode)}
+                </td>
                 ))}
               </tr>
             ))

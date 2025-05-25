@@ -1,10 +1,10 @@
 import React from "react";
 
-export interface TableColumn<T> {
-  key: keyof T;
+export interface TableColumn<T, K extends keyof T = keyof T> {
+  key: K;
   label: string;
   sortable?: boolean;
-  render?: (value: any, row: T) => React.ReactNode;
+  render?: (value: T[K], row: T) => React.ReactNode;
 }
 
 export interface TableProps<T> {

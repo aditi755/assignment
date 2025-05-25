@@ -3,8 +3,12 @@
 
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import type { Session } from "next-auth";
 
-export default function ClientProfile({session} : { session: any }) {
+interface ClientProfileProps {
+  session: Session | null;  // session can be null if unauthenticated
+}
+export default function ClientProfile({ session }: ClientProfileProps) {
 
   if (status === "loading") return (
     <div className="flex flex-col items-center justify-center min-h-[200px]">

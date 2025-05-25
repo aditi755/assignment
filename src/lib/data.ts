@@ -50,6 +50,7 @@ export const mockOrders: PizzaOrder[] = [
     orderDate: '2024-05-20 12:30',
     status: 'Cancelled',
   },
+  
 ]
 
 export const getStatusColor = (status: OrderStatus): string => {

@@ -10,7 +10,7 @@ import OrdersFilter from "@/components/ui/OrdersFilter";
 
 const statusOptions: OrderStatus[] = ["Pending", "Preparing", "Out for Delivery", "Delivered", "Cancelled"];
 
-export default function ClientPizzaOrderPage({ session }: { session: any }) {
+export default function ClientPizzaOrderPage() {
   const [sortKey, setSortKey] = useState<keyof PizzaOrder>("orderDate");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [statusFilter, setStatusFilter] = useState<OrderStatus | "all">("all");

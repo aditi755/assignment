@@ -1,4 +1,3 @@
-// app/orders/hooks/useFilteredOrders.ts
 import { useMemo } from "react";
 import { PizzaOrder, OrderStatus } from "@/types/orders";
 
@@ -9,7 +8,7 @@ export function useFilteredOrders(
   statusFilter: OrderStatus | "all"
 ) {
   return useMemo(() => {
-    let filtered = statusFilter === "all" 
+    const filtered = statusFilter === "all" 
       ? orders 
       : orders.filter(order => order.status === statusFilter);
 

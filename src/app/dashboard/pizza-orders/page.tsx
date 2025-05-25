@@ -9,5 +9,5 @@ export default async function PizzaOrdersPage() {
     redirect("/login");
   }
 
-  return <ClientPizzaOrderPage session={session} />;
+  return <ClientPizzaOrderPage />;
 }

@@ -1,6 +1,7 @@
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import {authOptions} from '../auth'
+import { Session } from "next-auth";
 
-export async function getServerAuthSession() {
+export async function getServerAuthSession(): Promise<Session | null> {
   return await getServerSession(authOptions);
 }

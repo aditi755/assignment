@@ -1,8 +1,9 @@
 import ClientProfile from "../../components/ClientProfile";
 import { getServerAuthSession } from "@/lib/getServerAuthSession";
+import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 export default async function ProfilePage() {
-   const session = await getServerAuthSession();
+ const session: Session | null = await getServerAuthSession();
 
    if(!session) {
      redirect("/login");

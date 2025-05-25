@@ -10,6 +10,7 @@ This is a modern full-stack web application built using **Next.js 15 App Router*
 Upon signing in with Google, users are welcomed with a personalized dashboard. They can navigate to a **Pizza Orders** page that displays a dynamic, styled table of mock order data, including order statuses and responsive layouts.
 
 Deployed link: https://assignment-flame-one.vercel.app/
+
 Demo Video: [here](https://www.loom.com/share/5ae0d434a590478aa3f4cb24c222cf33?sid=e0d4b63f-6476-479a-bf90-7409ba25fbf0)
 
 ---
